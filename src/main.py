@@ -4,7 +4,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import time
 
 # 데이터 크롤링
-data_list = crowling_data("18166545")
+data_list = crowling_data("18166545")  # 카카오맵 ID (예시: "18166545")
 # Translator 객체 생성
 translator = Translator()
 # 리스트의 모든 항목을 영어로 번역
@@ -20,5 +20,5 @@ for i in data_list:
 
 analyzer = SentimentIntensityAnalyzer()
 for sentence in sentences:
-    vs = analyzer.polarity_scores(sentence)
+    vs = analyzer.polarity_scores(sentence)  ## 점수 dictionary
     print("{:-<65} {}".format(sentence, str(vs)))
