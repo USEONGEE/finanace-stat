@@ -1,0 +1,25 @@
+/* src/components/RestaurantForm.css */
+.restaurant-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 80%;
+    max-width: 400px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}

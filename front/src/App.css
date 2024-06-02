@@ -1,0 +1,25 @@
+/* src/App.css */
+.app-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.average-rating {
+    margin: 20px 0;
+}
+
+.star {
+    font-size: 24px;
+    color: lightgray;
+}
+
+.star.filled {
+    color: gold;
+}
