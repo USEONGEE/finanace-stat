@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-%$tr=j=k0^ymuumet)r&m*9#sitgy^-lk4_osvg*$(0*f0mw7!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -127,8 +127,9 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React 개발 서버 주소
-    # 필요한 경우 여기에 더 많은 도메인을 추가
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",  # React 개발 서버 주소
+#     # 필요한 경우 여기에 더 많은 도메인을 추가
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = ["*"]

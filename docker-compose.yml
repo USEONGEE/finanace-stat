@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  django:
+    build:
+      context: ./back
+      dockerfile: Dockerfile
+    container_name: django_container
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./back:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  react:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: react_container
+    volumes:
+      - ./front:/usr/src/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:13
+    container_name: postgres_container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+volumes:
+  postgres_data:

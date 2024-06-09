@@ -14,20 +14,25 @@ def process_reviews(restaurant_id):
 
         # 데이터 크롤링
         data_list = crowling_data(place_id)
+        print(len(data_list))
 
         # 데이터 리스트를 최대 50개로 제한
-        data_list = data_list[:50]
+        if len(data_list) > 50:
+            print("Data list is too long. Truncating to 50 items.")
+            data_list = data_list[:50]
 
         # Translator 객체 생성
         translator = Translator()
 
         # 리스트의 모든 항목을 영어로 번역
         sentences = []
+        original_sentences = []
         for i in data_list:
             try:
                 translated_text = translator.translate(i, dest="en").text
                 sentences.append(translated_text)
-                time.sleep(0.1)  # 0.1초 대기 후 재시도
+                original_sentences.append(i)
+                time.sleep(0.01)  # 0.1초 대기 후 재시도
             except Exception as e:
                 print(f"번역 오류: {i}")
 
@@ -35,11 +40,12 @@ def process_reviews(restaurant_id):
         analyzer = SentimentIntensityAnalyzer()
 
         # 감정 점수를 저장할 리스트
-        for sentence in sentences:
+        for original_sentence, sentence in zip(original_sentences, sentences):
             vs = analyzer.polarity_scores(sentence)  # 점수 dictionary
             review = Review(
                 restaurant=restaurant,
-                review_text=sentence,
+                review_text=original_sentence,  # 원문 저장
+                # translated_text=sentence,  # 번역된 텍스트 저장
                 positive_score=vs["pos"],
                 negative_score=vs["neg"],
                 neu_score=vs["neu"],
