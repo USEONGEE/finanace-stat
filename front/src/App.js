@@ -30,7 +30,10 @@ const App = () => {
   return (
     <div className="app-container">
       <h1 className="logo">Find your Best restaurant!</h1>
-      <button className="info-button" onClick={toggleModal}>?</button>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
+        <span style={{ marginRight: '10px' }}>🤔 How can I get a restaurant ID? 🤔</span>
+        <button className="info-button" onClick={toggleModal}>here is the information!</button>
+      </div>
       <RestaurantForm onRestaurantSubmit={handleRestaurantSubmit} />
       {prevAverageRating && (
         <div className="prev-average-rating">
