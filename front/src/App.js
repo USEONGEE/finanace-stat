@@ -45,12 +45,14 @@ const App = () => {
           ))}
         </div>
       )}
-      {selectedRestaurant && (
+      {selectedRestaurant ? (
         <ReviewList
           restaurantId={selectedRestaurant}
           onAverageRating={handleAverageRating}
           onPrevAverageRating={handlePrevAverageRating}
         />
+      ) : (
+        <div className="no-restaurant">Search your best restaurant!</div>
       )}
       <Modal show={isModalOpen} onClose={toggleModal}>
         <Info />
