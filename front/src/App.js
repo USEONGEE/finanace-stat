@@ -30,37 +30,41 @@ const App = () => {
   return (
     <div className="app-container">
       <h1 className="logo">Find your Best restaurant!</h1>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '20px' }}>
-        <span style={{ marginRight: '10px' }}>🤔 How can I get a restaurant ID? 🤔</span>
-        <button className="info-button" onClick={toggleModal}>here is the information!</button>
-      </div>
+      <h4>🤔 How can I get a restaurant ID? 🤔</h4>
+      <button className="info-button" onClick={toggleModal}>here is the information!</button>
       <RestaurantForm onRestaurantSubmit={handleRestaurantSubmit} />
-      {prevAverageRating && (
-        <div className="prev-average-rating">
-          실제 평점: {prevAverageRating}
-        </div>
-      )}
-      {averageRating && (
-        <div className="average-rating">
-          평균 평점: {averageRating.toFixed(1)}
-          {Array.from({ length: 5 }, (_, index) => (
-            <span key={index} className={`star ${index < averageRating ? 'filled' : ''}`}>&#9733;</span>
-          ))}
-        </div>
-      )}
-      {selectedRestaurant ? (
-        <ReviewList
-          restaurantId={selectedRestaurant}
-          onAverageRating={handleAverageRating}
-          onPrevAverageRating={handlePrevAverageRating}
-        />
-      ) : (
-        <div className="no-restaurant">Search your best restaurant!</div>
-      )}
+      {
+        prevAverageRating && (
+          <div className="prev-average-rating">
+            실제 평점: {prevAverageRating}
+          </div>
+        )
+      }
+      {
+        averageRating && (
+          <div className="average-rating">
+            평균 평점: {averageRating.toFixed(1)}
+            {Array.from({ length: 5 }, (_, index) => (
+              <span key={index} className={`star ${index < averageRating ? 'filled' : ''}`}>&#9733;</span>
+            ))}
+          </div>
+        )
+      }
+      {
+        selectedRestaurant ? (
+          <ReviewList
+            restaurantId={selectedRestaurant}
+            onAverageRating={handleAverageRating}
+            onPrevAverageRating={handlePrevAverageRating}
+          />
+        ) : (
+          <div className="no-restaurant">Search your best restaurant!</div>
+        )
+      }
       <Modal show={isModalOpen} onClose={toggleModal}>
         <Info />
       </Modal>
-    </div>
+    </div >
   );
 };
 
