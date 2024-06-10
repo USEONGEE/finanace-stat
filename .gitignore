@@ -5,3 +5,10 @@ pyvenv.cfg
 __pycache__/
 *.py[cod]
 *.pyo
+debug.log
+__pycache__/
+*.pyc
+fetch_data.log
+*.log
+.env*
+db.sqltie3
