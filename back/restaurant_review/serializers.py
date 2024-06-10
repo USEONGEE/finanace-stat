@@ -5,11 +5,12 @@ from .models import Restaurant, Review
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
-        fields = ["id", "name", "platform", "place_id", "is_active"]
+        fields = ["id", "name", "platform", "place_id", "is_active", "average_rating"]
         read_only_fields = ["id", "is_active"]
         extra_kwargs = {
             "name": {"required": False},
             "platform": {"required": False},
+            "average_rating": {"required": False},
         }
 
 

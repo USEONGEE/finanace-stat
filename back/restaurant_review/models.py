@@ -14,6 +14,9 @@ class Restaurant(models.Model):
     place_id = models.CharField(max_length=255)
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=timezone.now)
+    average_rating = models.CharField(
+        default="0.0점", max_length=10
+    )  # 평균 평점 필드 추가
 
     def __str__(self):
         return self.name

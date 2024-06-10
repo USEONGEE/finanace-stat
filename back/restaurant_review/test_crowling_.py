@@ -19,11 +19,11 @@ def crowling_data(id):
         # 페이지가 로드될 시간을 기다림 (필요에 따라 조정)
         time.sleep(2)
         # num_rate 클래스를 가진 모든 요소 찾기
-        elements = driver.find_elements(By.CSS_SELECTOR, ".num_rate")
+        rates = driver.find_elements(By.CSS_SELECTOR, ".num_rate")
 
-        if elements:
+        if rates:
             # 마지막 요소 선택
-            last_element = elements[-2]
+            last_element = rates[-2]
             print(last_element)
 
             # 마지막 요소의 텍스트 가져오기

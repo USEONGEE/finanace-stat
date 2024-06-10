@@ -43,8 +43,22 @@ def crowling_data(id):
                 result.append(data_element.text)
             except:
                 pass
+        try:
+            rates = driver.find_elements(By.CSS_SELECTOR, ".num_rate")
+            if rates:
+                # 마지막 요소 선택
+                last_element = rates[-2]
+                print(last_element)
+
+                # 마지막 요소의 텍스트 가져오기
+                text = last_element.text
+                print(text)
+            else:
+                print("No elements found with the class 'num_rate'")
+        except:
+            text = "0.0점"
 
     finally:
         # 브라우저 닫기
         driver.quit()
-        return result
+        return result, text

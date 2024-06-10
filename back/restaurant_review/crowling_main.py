@@ -13,8 +13,9 @@ def process_reviews(restaurant_id):
         place_id = restaurant.place_id
 
         # 데이터 크롤링
-        data_list = crowling_data(place_id)
-        print(len(data_list))
+        data_list, prev_avg_rate = crowling_data(place_id)
+        restaurant.average_rating = prev_avg_rate
+        restaurant.save(update_fields=["average_rating"])
 
         # 데이터 리스트를 최대 50개로 제한
         if len(data_list) > 50:
@@ -32,7 +33,7 @@ def process_reviews(restaurant_id):
                 translated_text = translator.translate(i, dest="en").text
                 sentences.append(translated_text)
                 original_sentences.append(i)
-                time.sleep(0.01)  # 0.1초 대기 후 재시도
+                time.sleep(0.05)  # 0.1초 대기 후 재시도
             except Exception as e:
                 print(f"번역 오류: {i}")
 
