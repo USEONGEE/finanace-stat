@@ -11,4 +11,4 @@ __pycache__/
 fetch_data.log
 *.log
 .env*
-db.sqltie3
+db.sqlite3
